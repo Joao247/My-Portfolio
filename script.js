@@ -83,9 +83,12 @@ const displayRepos = (repos) => {
         let listItem = document.createElement('li');
         listItem.classList.add('repo');
         listItem.innerHTML = `
-            <h3>${repo.name}</h3>
-            <span>${repo.description}</span> <br/><br/>`
+            <h3>${repo.name}</h3>`
 
+        if (repo.description) {
+            listItem.innerHTML += `<span>${repo.description}</span> <br/><br/>`;
+        }
+            
         if (repo.stargazers_count > 0) {
             listItem.innerHTML += `<a href="${starsUrl}">
             <span>⭐ ${repo.stargazers_count}</span></a>`
