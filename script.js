@@ -69,21 +69,30 @@ getRepos();
 
 // display list of all user's public repos
 const displayRepos = (repos) => {
-    const userHome = `https://github.com/${username}`
+    const userHome = `https://github.com/${username}`;
     filterInput.classList.remove('hide');
     for (const repo of repos) {
         if (repo.fork && hideForks) {
             continue;
         }
 
-        const langUrl = `${userHome}?tab=repositories&q=&language=${repo.language}`
-        const starsUrl = `${userHome}/${repo.name}/stargazers`
-        const forksUrl = `${userHome}/${repo.name}/network/members`
+        const langUrl = `${userHome}?tab=repositories&q=&language=${repo.language}`;
+        const starsUrl = `${userHome}/${repo.name}/stargazers`;
+        const forksUrl = `${userHome}/${repo.name}/network/members`;
 
         let listItem = document.createElement('li');
         listItem.classList.add('repo');
+
+        // Apply custom CSS styles to the listItem
+        listItem.style.width = '200px'; /* Adjust the width as needed */
+        listItem.style.margin = '10px'; /* Adjust the margin as needed */
+        listItem.style.padding = '10px'; /* Adjust the padding as needed */
+        listItem.style.border = '1px solid #ccc'; /* Add a border for clarity */
+        listItem.style.display = 'inline-block'; /* Ensure it appears in a horizontal line */
+        listItem.style.verticalAlign = 'top'; /* Align elements at the top */
+
         listItem.innerHTML = `
-            <h3>${repo.name}</h3>`
+            <h3>${repo.name}</h3>`;
 
         if (repo.description) {
             listItem.innerHTML += `<span>${repo.description}</span> <br/><br/>`;
@@ -109,13 +118,17 @@ const displayRepos = (repos) => {
             <a class="link-btn" href=${repo.html_url}>Code ${devicons["Github"]}</a>
             <a class="link-btn" href=${repo.homepage}>Live ${devicons["Chrome"]}</a> <br />`;
         } else {
-            listItem.innerHTML += `<br /> <br />
-            <a class="link-btn" href=${repo.html_url}>View Project ${devicons["Github"]}</a><br />`;
+            listItem.innerHTML += `
+                <div style="margin-top: 50px;">
+                    <a class="link-btn" href=${repo.html_url} style="width: 150px;">View Project ${devicons["Github"]}</a>
+                </div>
+            `;
         }
-
-        repoList.append(listItem);
+        if(repo.name != 'My-Portfolio')
+            repoList.append(listItem);
     }
 };
+
 
 // dynamic search
 filterInput.addEventListener('input', (e) => {
