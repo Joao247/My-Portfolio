@@ -194,6 +194,7 @@ h3 {
     border-radius: 30px;
     border: 2px solid var(--accent);
     color: var(--text);
+    display: inline-block;
 }
 
 .link-btn:hover {
@@ -201,6 +202,12 @@ h3 {
     border: 2px solid var(--text);
     transform: scale(1.1);
 }
+
+/* Add this style for wider buttons */
+.link-btn.wider {
+    width: 150px; /* Adjust this value as needed */
+}
+
 
 .repo-list p {
     padding: 0em 0.5em;

@@ -115,8 +115,9 @@ const displayRepos = (repos) => {
 
         if (repo.homepage && repo.homepage !== "") {
             listItem.innerHTML += `<br /> <br />
-            <a class="link-btn" href=${repo.html_url}>Code ${devicons["Github"]}</a>
-            <a class="link-btn" href=${repo.homepage}>Live ${devicons["Chrome"]}</a> <br />`;
+            <a class="link-btn wider" href=${repo.html_url}>Code ${devicons["Github"]}</a>
+            <a class="link-btn wider" href=${repo.homepage}>Live ${devicons["Chrome"]}</a> <br />
+             <br />`;
         } else {
             listItem.innerHTML += `
                 <div style="margin-top: 50px;">
